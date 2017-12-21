@@ -1,0 +1,22 @@
+Installation of Mysql:
+---------------------
+sudo add-apt-repository 'deb http://archive.ubuntu.com/ubuntu trusty universe' 
+sudo apt-get update 
+sudo apt install mysql-server-5.6 * see note below if you get an error 
+sudo apt install mysql-client-5.6
+
+
+Password Changing:
+------------------
+1.Stop the MySQL Server: sudo /etc/init.d/mysql stop
+2.Start the mysqld configuration: sudo mysqld --skip-grant-tables &
+3.Login to MySQL as root(New Tab): mysql -u root mysql
+4.Replace YOURNEWPASSWORD with your new password:
+  UPDATE
+    mysql.user
+  SET
+    Password = PASSWORD('pass')
+  WHERE
+    User = 'root';
+  FLUSH PRIVILEGES;
+  exit;
